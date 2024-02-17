@@ -19,7 +19,7 @@ class Pelotita {
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    ctx.fillStyle = 'blue';
+    ctx.fillStyle = 'red'; // Cambia el color aquí
     ctx.fill();
   }
 
@@ -56,7 +56,7 @@ for (var i = 0; i < 12; i++) {
 // Función de animación
 function animate() {
   requestAnimationFrame(animate);
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   for (var i = 0; i < pelotitas.length; i++) {
@@ -74,7 +74,7 @@ function animate() {
         ctx.beginPath();
         ctx.moveTo(pelotitas[i].x, pelotitas[i].y);
         ctx.lineTo(pelotitas[j].x, pelotitas[j].y);
-        ctx.strokeStyle = 'blue';
+        ctx.strokeStyle = 'red'; // Cambia el color aquí
         ctx.stroke();
       }
     }
