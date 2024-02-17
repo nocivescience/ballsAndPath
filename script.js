@@ -82,3 +82,47 @@ function animate() {
 }
 
 animate();
+
+canvas.addEventListener('click', function(event) {
+    // Obtiene la posición del clic en el canvas
+    var rect = canvas.getBoundingClientRect();
+    var clickX = event.clientX - rect.left;
+    var clickY = event.clientY - rect.top;
+  
+    // Aumenta la velocidad de cada bola en la dirección desde el clic hasta la bola
+    for (var i = 0; i < pelotitas.length; i++) {
+      var dx = pelotitas[i].x - clickX;
+      var dy = pelotitas[i].y - clickY;
+      var distance = Math.sqrt(dx * dx + dy * dy);
+  
+      if (distance < 200) { // 200px
+        // Calcula la dirección normalizada
+        var directionX = dx / distance;
+        var directionY = dy / distance;
+  
+        // Aumenta la velocidad de la bola en la dirección
+        pelotitas[i].dx += directionX * 5; // Ajusta la cantidad de velocidad que se añade aquí
+        pelotitas[i].dy += directionY * 5; // Ajusta la cantidad de velocidad que se añade aquí
+      }
+    }
+  });
+
+// // Agrega un controlador de eventos de clic al canvas
+// canvas.addEventListener('click', function(event) {
+//     // Obtiene la posición del clic en el canvas
+//     var rect = canvas.getBoundingClientRect();
+//     var clickX = event.clientX - rect.left;
+//     var clickY = event.clientY - rect.top;
+  
+//     // Cambia la dirección de cualquier bola que esté a menos de 200px del clic
+//     for (var i = 0; i < pelotitas.length; i++) {
+//       var dx = clickX - pelotitas[i].x;
+//       var dy = clickY - pelotitas[i].y;
+//       var distance = Math.sqrt(dx * dx + dy * dy);
+  
+//       if (distance < 200) { // 200px
+//         pelotitas[i].dx = -pelotitas[i].dx;
+//         pelotitas[i].dy = -pelotitas[i].dy;
+//       }
+//     }
+//   });
