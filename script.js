@@ -62,6 +62,23 @@ function animate() {
   for (var i = 0; i < pelotitas.length; i++) {
     pelotitas[i].update();
   }
+
+  // Dibuja una línea entre las bolas que están a menos de 3 cm una de otra
+  for (var i = 0; i < pelotitas.length; i++) {
+    for (var j = i + 1; j < pelotitas.length; j++) {
+      var dx = pelotitas[i].x - pelotitas[j].x;
+      var dy = pelotitas[i].y - pelotitas[j].y;
+      var distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 3 * 37.795275591) { // 3 cm en píxeles
+        ctx.beginPath();
+        ctx.moveTo(pelotitas[i].x, pelotitas[i].y);
+        ctx.lineTo(pelotitas[j].x, pelotitas[j].y);
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+      }
+    }
+  }
 }
 
 animate();
